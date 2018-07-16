@@ -98,7 +98,7 @@ def register(bot, update, args):
 
 	#check same data:
 	if str(user_chatid) in users_data:
-		bot.send_message(chat_id=update.message.chat_id, text="*You have been registered!*", parse_mode=telegram.ParseMode.MARKDOWN)
+		bot.send_message(chat_id=update.message.chat_id, text="*You are already registered!*", parse_mode=telegram.ParseMode.MARKDOWN)
 		return
 
 	#send user data to users_data
