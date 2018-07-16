@@ -60,11 +60,11 @@ def start(bot, update):
 	#message
 	msg = "*WELCOME TO DJ BOT V1*!\n"
 	msg+= "---------------------------------------\n"
-	msg+= "Hello "+user+" ! 😆\n"
+	msg+= "Hello "+user+" ! 😊\n"
 	msg+= "I am a test bot!!\n"
-	msg+= "Please Send \n /Register [Your NickName]\n"
+	msg+= "Please enter your email to stay updated \n /Register [Your email]\n"
 
-	msg+= "More command:\n"
+	msg+= "More commands available:\n"
 	msg+= "-> `/myid`\n"
 	msg+= "\n"
 	msg+= "This bot is developed by:\n"
@@ -88,11 +88,11 @@ def register(bot, update, args):
 	try:
 		user_NickName = args[0]
 	except IndexError as e:
-		update.message.reply_text("Please input your NICKNAME!")
+		update.message.reply_text("Please input your email!")
 		return
 
 	#filter for avoid spammer
-	if len(user_NickName) > 20:
+	if len(user_email) > 30:
 		bot.send_message(chat_id=update.message.chat_id, text="*Please don't make spam in this bot!*", parse_mode=telegram.ParseMode.MARKDOWN)
 		return
 
@@ -102,12 +102,12 @@ def register(bot, update, args):
 		return
 
 	#send user data to users_data
-	users_data[str(user_chatid)]= {"user_firstname":str(user_firstname), "user_username":user_username, "user_NickName":user_NickName}
+	users_data[str(user_chatid)]= {"user_firstname":str(user_firstname), "user_username":user_username, "user_email":user_email}
 
 	#make report message about user's biodata
 	msg = "NAME: "+user_firstname+"\n"
 	msg+= "USERNAME  : @"+user_username+"\n"
-	msg+= "NICKNAME  : "+user_NickName+"\n"
+	msg+= "email  : "+user_email+"\n"
 
 	print(users_data)
 	print("\n")
@@ -135,7 +135,7 @@ def res(bot, update):
 
 	elif update.message.chat_id >= 0:
 		if update.message.chat_id == vip_developer:
-			bot.send_message(chat_id=update.message.chat_id, text="Bot is restarting...")
+			bot.send_message(chat_id=update.message.chat_id, text="Have rest Dev, Bot is restarting...")
 			time.sleep(0.2)
 			os.execl(sys.executable, sys.executable, *sys.argv)
 			return
