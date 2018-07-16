@@ -63,12 +63,12 @@ def start(bot, update):
 	msg+= "Hello "+user+" ! 😆\n"
 	msg+= "I am a test bot!!\n"
 	msg+= "Please Send \n /Register [Your NickName]\n"
-	msg+= "\n"
+
 	msg+= "More command:\n"
 	msg+= "-> `/myid`\n"
 	msg+= "\n"
-	msg+= "For more information📚, you can ask:\n"
-	msg+= "-> `@dharmaraj_24`\n"
+	msg+= "This bot is developed by:\n"
+	msg+= "-> @dharmaraj_24\n"
 	
 	msg+= "---------------------------------------\n"
 	#send message to user
@@ -102,7 +102,7 @@ def register(bot, update, args):
 		return
 
 	#send user data to users_data
-	users_data[str(user_chatid)]= {"user_firstname":str(user_firstname), "user_username":user_username, "user_pubg_ign":user_pubg_ign}
+	users_data[str(user_chatid)]= {"user_firstname":str(user_firstname), "user_username":user_username, "user_NickName":user_NickName}
 
 	#make report message about user's biodata
 	msg = "NAME: "+user_firstname+"\n"
