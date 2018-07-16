@@ -86,19 +86,19 @@ def register(bot, update, args):
 	user_chatid   = update.message.chat_id
 	user_firstname= update.message.from_user.first_name
 	try:
-		user_pubg_ign = args[0]
+		user_NickName = args[0]
 	except IndexError as e:
-		update.message.reply_text("Please input your PUBG IGN!")
+		update.message.reply_text("Please input your NICKNAME!")
 		return
 
 	#filter for avoid spammer
-	if len(user_pubg_ign) > 20:
+	if len(user_NickName) > 20:
 		bot.send_message(chat_id=update.message.chat_id, text="*Please don't make spam in this bot!*", parse_mode=telegram.ParseMode.MARKDOWN)
 		return
 
 	#check same data:
 	if str(user_chatid) in users_data:
-		bot.send_message(chat_id=update.message.chat_id, text="*You has been registered!*", parse_mode=telegram.ParseMode.MARKDOWN)
+		bot.send_message(chat_id=update.message.chat_id, text="*You have been registered!*", parse_mode=telegram.ParseMode.MARKDOWN)
 		return
 
 	#send user data to users_data
@@ -107,7 +107,7 @@ def register(bot, update, args):
 	#make report message about user's biodata
 	msg = "NAME: "+user_firstname+"\n"
 	msg+= "USERNAME  : @"+user_username+"\n"
-	msg+= "NICKNAME  : "+user_pubg_ign+"\n"
+	msg+= "NICKNAME  : "+user_NickName+"\n"
 
 	print(users_data)
 	print("\n")
